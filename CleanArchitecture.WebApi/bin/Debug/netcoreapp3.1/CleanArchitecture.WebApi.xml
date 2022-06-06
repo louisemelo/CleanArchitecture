@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CleanArchitecture.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:CleanArchitecture.WebApi.Controllers.BooksController">
+            <summary>
+            Books controller
+            </summary>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Interfaces.IBookService)">
+            <summary>
+            Books controller constructor
+            </summary>
+            <param name="bookService"></param>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.GetAllBooks">
+            <summary>
+            Get all books
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.GetBookById(System.Int32)">
+            <summary>
+            Get book by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
