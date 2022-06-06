@@ -1,6 +1,5 @@
 ﻿using CleanArchitecture.Application.Contracts;
-using CleanArchitecture.Application.InputModels;
-using CleanArchitecture.Application.UseCases;
+using CleanArchitecture.Application.Inputs;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -14,23 +13,24 @@ namespace CleanArchitecture.WebApi.Controllers
     [Route("api/books")]
     public class BooksController : ControllerBase
     {
-        private readonly IUseCase<CreateBookInputModel> _useCaseCreateBook;
+        private readonly IUseCase<CreateBookInput> _useCaseCreateBook;
 
         /// <summary>
-        /// 
+        /// Bookds controller constructor
         /// </summary>
         /// <param name="useCaseCreateBook"></param>
-        public BooksController(IUseCase<CreateBookInputModel> useCaseCreateBook)
+        public BooksController(IUseCase<CreateBookInput> useCaseCreateBook)
         {
             _useCaseCreateBook = useCaseCreateBook;
         }
 
         /// <summary>
-        /// Get all books
+        /// Add book
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddBook(CreateBookInputModel request)
+        [Route("/add")]
+        public async Task<IActionResult> AddBook(CreateBookInput request)
         {
             try
             {
@@ -43,7 +43,5 @@ namespace CleanArchitecture.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
     }
 }

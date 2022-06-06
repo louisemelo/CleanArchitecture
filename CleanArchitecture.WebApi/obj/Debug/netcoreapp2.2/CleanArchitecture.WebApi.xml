@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CleanArchitecture.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:CleanArchitecture.WebApi.Controllers.BooksController">
+            <summary>
+            Books controller
+            </summary>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.InputModels.CreateBookInputModel})">
+            <summary>
+            
+            </summary>
+            <param name="useCaseCreateBook"></param>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.AddBook(CleanArchitecture.Application.InputModels.CreateBookInputModel)">
+            <summary>
+            Get all books
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

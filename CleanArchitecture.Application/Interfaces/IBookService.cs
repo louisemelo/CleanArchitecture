@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Application.OutputModels;
+﻿using CleanArchitecture.Application.Outputs;
 
 namespace CleanArchitecture.Application.Interfaces
 {

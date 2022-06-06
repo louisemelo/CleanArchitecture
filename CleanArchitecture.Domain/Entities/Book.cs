@@ -11,6 +11,7 @@ namespace CleanArchitecture.Domain.Entities
             Edition = edition;
             Year = year;
         }
+
         public string Name { get; private set; }
         public Author Author { get; private set; }
         public int Edition { get; private set; }
@@ -23,7 +24,9 @@ namespace CleanArchitecture.Domain.Entities
         {
             Requires()
                 .IsNotNullOrWhiteSpace(book.Name, "Name", "Name is required")
-                .IsNotNull(book.Author, "Author", "Author is required");
+                .IsNotNull(book.Author, "Author", "Author is required")
+                .IsGreaterThan(0, book.Edition, "Edition", "Edition must be greater than zero")
+                .IsGreaterThan(1979, book.Year, "Year", "Year must be greater than 1979");
         }
     }
 }

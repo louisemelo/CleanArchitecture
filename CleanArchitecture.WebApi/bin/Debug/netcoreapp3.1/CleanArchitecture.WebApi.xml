@@ -4,20 +4,37 @@
         <name>CleanArchitecture.WebApi</name>
     </assembly>
     <members>
+        <member name="T:CleanArchitecture.WebApi.Controllers.AuthorsController">
+            <summary>
+            Authors controller
+            </summary>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.Inputs.CreateAuthorInput})">
+            <summary>
+            Authors controller constructor
+            </summary>
+            <param name="useCaseCreateAuthor"></param>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.AddBook(CleanArchitecture.Application.Inputs.CreateAuthorInput)">
+            <summary>
+            Add author
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CleanArchitecture.WebApi.Controllers.BooksController">
             <summary>
             Books controller
             </summary>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.InputModels.CreateBookInputModel})">
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.Inputs.CreateBookInput})">
             <summary>
-            
+            Bookds controller constructor
             </summary>
             <param name="useCaseCreateBook"></param>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.AddBook(CleanArchitecture.Application.InputModels.CreateBookInputModel)">
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.AddBook(CleanArchitecture.Application.Inputs.CreateBookInput)">
             <summary>
-            Get all books
+            Add book
             </summary>
             <returns></returns>
         </member>

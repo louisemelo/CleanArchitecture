@@ -1,14 +1,12 @@
 ﻿using CleanArchitecture.Application.Contracts;
-using CleanArchitecture.Application.InputModels;
+using CleanArchitecture.Application.Exceptions;
+using CleanArchitecture.Application.Inputs;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Interfaces.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CleanArchitecture.Application.UseCases
 {
-    public sealed class CreateBookUseCase : IUseCase<CreateBookInputModel>
+    public sealed class CreateBookUseCase : IUseCase<CreateBookInput>
     {
         private readonly IBookRepository _bookRepository;
         private readonly IAuthorRepository _authorRepository;
@@ -19,19 +17,12 @@ namespace CleanArchitecture.Application.UseCases
             this._authorRepository = authorRepository;
         }
 
-        public async ValueTask ExecuteTaskAsync(CreateBookInputModel input)
+        public async ValueTask ExecuteTaskAsync(CreateBookInput input)
         {
-
             var author = await _authorRepository.GetAuthorByName(input.AuthorName).ConfigureAwait(true);
 
             if (author == null)
-            {
-                author = new Author(input.AuthorName);
-
-                _authorRepository.AddAuthor(author).ConfigureAwait(true);
-
-                author = await _authorRepository.GetAuthorByName(input.AuthorName).ConfigureAwait(true);
-            }
+                throw new AuthorNotFoundException("No author found for the given name. Author registration required to add a book.");
 
             var book = new Book(input.Name, author, input.Edition, input.Year);
         }
