@@ -12,22 +12,12 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
     {
         private readonly List<Book> Books;
 
-        public BookRepository()
+        
+        public void CreateBook(Book book)
         {
-            Books = new List<Book>();
-
-            Books.Add(new Book { Id = 1, Name = "Clean Achitecture", Author = "Robert C. Martin", Edition = 1, Year = 2017 });
-            Books.Add(new Book { Id = 2, Name = "Clean Code", Author = "Robert C. Martin", Edition = 1, Year = 2009 });
-            Books.Add(new Book { Id = 3, Name = "Domain-Drive Design - Trackling Complexity in the Heart of Software", Author = "Eric Evans", Edition = 3, Year = 2003 });
-        }
-        public List<Book> GetAllBooks()
-        {
-            return Books;
+            throw new NotImplementedException();
         }
 
-        public Book GetBook(int id)
-        {
-            return Books.Where(w => w.Id == id).FirstOrDefault();
-        }
+     
     }
 }

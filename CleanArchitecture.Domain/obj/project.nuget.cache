@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/DF36r2Cu2XcmwGwdj0v3KtVoiwM6DBJXdrqJCbl8E1YM1lauq8Sm/gSrMHtmtpYARrWGHWbVS8c/f010Kn6QQ==",
+  "dgSpecHash": "8/xS9pcdF14HbJVliyUKjectSq5PSqDKOt9z8ejiZP8+11GBBHUBsZ3Gi6L6kSV1iSJ2sCdLEnIaSv3en0NE0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\louis\\source\\repos\\CleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\louis\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512"
+  ],
   "logs": []
 }

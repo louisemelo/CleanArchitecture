@@ -9,23 +9,16 @@
             Books controller
             </summary>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Interfaces.IBookService)">
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.InputModels.CreateBookInputModel})">
             <summary>
-            Books controller constructor
+            
             </summary>
-            <param name="bookService"></param>
+            <param name="useCaseCreateBook"></param>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.GetAllBooks">
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.AddBook(CleanArchitecture.Application.InputModels.CreateBookInputModel)">
             <summary>
             Get all books
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.GetBookById(System.Int32)">
-            <summary>
-            Get book by id
-            </summary>
-            <param name="id"></param>
             <returns></returns>
         </member>
     </members>

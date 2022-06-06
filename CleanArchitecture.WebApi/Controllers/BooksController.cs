@@ -1,6 +1,9 @@
-﻿using CleanArchitecture.Application.Interfaces;
+﻿using CleanArchitecture.Application.Contracts;
+using CleanArchitecture.Application.InputModels;
+using CleanArchitecture.Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace CleanArchitecture.WebApi.Controllers
 {
@@ -11,34 +14,29 @@ namespace CleanArchitecture.WebApi.Controllers
     [Route("api/books")]
     public class BooksController : ControllerBase
     {
-        private readonly IBookService _bookService;
+        private readonly IUseCase<CreateBookInputModel> _useCaseCreateBook;
 
         /// <summary>
-        /// Books controller constructor
+        /// 
         /// </summary>
-        /// <param name="bookService"></param>
-        public BooksController(IBookService bookService)
+        /// <param name="useCaseCreateBook"></param>
+        public BooksController(IUseCase<CreateBookInputModel> useCaseCreateBook)
         {
-            _bookService = bookService;
+            _useCaseCreateBook = useCaseCreateBook;
         }
 
         /// <summary>
         /// Get all books
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public IActionResult GetAllBooks()
+        [HttpPost]
+        public async Task<IActionResult> AddBook(CreateBookInputModel request)
         {
             try
             {
-                var books = _bookService.GetAllBooks();
+                await _useCaseCreateBook.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                if (books == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(books);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -46,30 +44,6 @@ namespace CleanArchitecture.WebApi.Controllers
             }
         }
 
-        /// <summary>
-        /// Get book by id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("/api/books/{id}")]
-        public IActionResult GetBookById(int id)
-        {
-            try
-            {
-                var book = _bookService.GetBookById(id);
 
-                if (book == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(book);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
 }

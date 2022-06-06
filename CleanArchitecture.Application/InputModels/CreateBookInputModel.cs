@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CleanArchitecture.Application.Contracts;
 
 namespace CleanArchitecture.Application.InputModels
 {
-    public class BookInputModel
+    public class CreateBookInputModel : IUseCaseInput
     {
         public string Name { get; set; }
         public int Edition { get; set; }
         public int Year { get; set; }
+        public string AuthorName { get; set; }
     }
 }
