@@ -15,7 +15,7 @@ namespace CleanArchitecture.Application.UseCases
             _authorRepository = authorRepository;
         }
 
-        public async ValueTask<T> ExecuteTaskAsync<T>(GetAuthorByNameInput input)
+        public async ValueTask<BaseOutput> ExecuteTaskAsync(GetAuthorByNameInput input)
         {
             if (string.IsNullOrEmpty(input.Name))
                 throw new ParametersInvalidsException("Filter 'Name' is required.");
@@ -25,7 +25,9 @@ namespace CleanArchitecture.Application.UseCases
             if (author == null)
                 throw new AuthorNotFoundException($"Author {input.Name} not found.");
 
-            return (T)Convert.ChangeType(await Task.Run(async () => new GetAuthorByNameOutput(author.Id, author.Name)).ConfigureAwait(true), typeof(T));
+            var result = new BaseOutput() { _result = new GetAuthorByNameOutput(author.Id, author.Name) };
+
+            return result;
         }
     }
 }

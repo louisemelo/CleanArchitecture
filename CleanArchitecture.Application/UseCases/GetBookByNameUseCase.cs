@@ -15,7 +15,7 @@ namespace CleanArchitecture.Application.UseCases
             _bookRepository = bookRepository;
         }
 
-        public async ValueTask<T> ExecuteTaskAsync<T>(GetBookByNameInput input)
+        public async ValueTask<BaseOutput> ExecuteTaskAsync(GetBookByNameInput input)
         {
             if (string.IsNullOrEmpty(input.Name))
                 throw new ParametersInvalidsException("Filter 'Name' is required.");
@@ -23,11 +23,11 @@ namespace CleanArchitecture.Application.UseCases
             var book = await _bookRepository.GetBookByName(input.Name).ConfigureAwait(true);
 
             if (book == null)
-                throw new BookNotFoundException($"Author {input.Name} not found.");
+                throw new BookNotFoundException($"Book {input.Name} not found.");
 
-            var result = new GetBookByNameOutput(book.Id, book.Name, book.Author.Name, book.Edition, book.Year);
+            var result = new BaseOutput() { _result = new GetBookByNameOutput(book.Id, book.Name, book.Author.Name, book.Edition, book.Year) };
 
-            return (T)Convert.ChangeType(await Task.Run(async () => result).ConfigureAwait(true), typeof(T));
+            return result;
         }
     }
 }

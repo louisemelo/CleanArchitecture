@@ -16,7 +16,8 @@ namespace CleanArchitecture.Application.Outputs
         {
             Message = message;
         }
-
+        
+        public dynamic _result { get; set; }
         public string Message { get; set; }
         public bool HasError { get; set; }
     }

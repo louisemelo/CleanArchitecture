@@ -63,9 +63,9 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             try
             {
-                var result = await _useCaseQueryGetAuthorByName.ExecuteTaskAsync<GetAuthorByNameOutput>(request).ConfigureAwait(true);
+                var result = await _useCaseQueryGetAuthorByName.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                return Ok(result);
+                return Ok(result._result as GetAuthorByNameOutput);
             }
             catch (Exception ex)
             {

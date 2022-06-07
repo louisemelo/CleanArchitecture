@@ -60,9 +60,9 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             try
             {
-                var result = await _useCaseGetBookByName.ExecuteTaskAsync<GetBookByNameOutput>(request).ConfigureAwait(true);
+                var result = await _useCaseGetBookByName.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                return Ok(result);
+                return Ok(result._result as GetBookByNameOutput);
             }
             catch (Exception ex)
             {
