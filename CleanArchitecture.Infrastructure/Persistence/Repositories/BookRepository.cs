@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 
         public async Task<Book> GetBookByName(string name)
         {
-            return _context.Books.Where(w => w.Name == name).FirstOrDefault();
+            return _context.Books.Include(i => i.Author).Where(w => w.Name == name).FirstOrDefault();
         }
 
     }

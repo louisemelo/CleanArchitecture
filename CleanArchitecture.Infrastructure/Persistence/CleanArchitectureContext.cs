@@ -1,14 +1,13 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanArchitecture.Infrastructure.Persistence
 {
     public class CleanArchitectureContext : DbContext
     {
         public CleanArchitectureContext(DbContextOptions<CleanArchitectureContext> options) : base(options)
-        { 
+        {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

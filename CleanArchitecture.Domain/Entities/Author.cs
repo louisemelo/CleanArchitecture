@@ -8,6 +8,7 @@ namespace CleanArchitecture.Domain.Entities
         public Author(string name)
         {
             Name = name;
+            AddNotifications();
         }
 
         public string Name { get; private set; }

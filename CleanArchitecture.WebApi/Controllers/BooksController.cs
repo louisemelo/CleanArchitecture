@@ -40,7 +40,7 @@ namespace CleanArchitecture.WebApi.Controllers
             {
                 await _useCaseCreateBook.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                return Ok(new CreatedBookOutput($"Author {request.Name} created successfully."));
+                return Ok(new CreatedBookOutput($"Book {request.Name} created successfully."));
             }
             catch (Exception ex)
             {
@@ -60,9 +60,9 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             try
             {
-                await _useCaseGetBookByName.ExecuteTaskAsync<GetBookByNameOutput>(request).ConfigureAwait(true);
+                var result = await _useCaseGetBookByName.ExecuteTaskAsync<GetBookByNameOutput>(request).ConfigureAwait(true);
 
-                return Ok(new GetBookByNameOutput($"Book {request.Name} created successfully."));
+                return Ok(result);
             }
             catch (Exception ex)
             {

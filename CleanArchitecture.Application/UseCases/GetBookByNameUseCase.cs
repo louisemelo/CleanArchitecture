@@ -25,7 +25,9 @@ namespace CleanArchitecture.Application.UseCases
             if (book == null)
                 throw new BookNotFoundException($"Author {input.Name} not found.");
 
-            return (T)Convert.ChangeType(await Task.Run(async () => new GetBookByNameInput()).ConfigureAwait(true), typeof(T));
+            var result = new GetBookByNameOutput(book.Id, book.Name, book.Author.Name, book.Edition, book.Year);
+
+            return (T)Convert.ChangeType(await Task.Run(async () => result).ConfigureAwait(true), typeof(T));
         }
     }
 }

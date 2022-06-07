@@ -11,6 +11,7 @@ namespace CleanArchitecture.Domain.Entities
             Author = author;
             Edition = edition;
             Year = year;
+            AddNotifications();
         }
 
         public string Name { get; private set; }
@@ -23,11 +24,13 @@ namespace CleanArchitecture.Domain.Entities
     {
         public BookValidation(Book book)
         {
+            IsGreaterThan(book.Edition, 0, "Edition", "Edition must be greater than zero");
+            IsGreaterThan(book.Year, 1979, "Year", "Year must be greater than 1979");
             Requires()
                 .IsNotNullOrWhiteSpace(book.Name, "Name", "Name is required")
-                .IsNotNull(book.Author, "Author", "Author is required")
-                .IsGreaterThan(0, book.Edition, "Edition", "Edition must be greater than zero")
-                .IsGreaterThan(1979, book.Year, "Year", "Year must be greater than 1979");
+                .IsNotNull(book.Author, "Author", "Author is required");
         }
+
+
     }
 }
