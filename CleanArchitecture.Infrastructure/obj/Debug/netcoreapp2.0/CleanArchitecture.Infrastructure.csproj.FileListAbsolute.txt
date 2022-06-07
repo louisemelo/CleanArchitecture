@@ -1,0 +1,13 @@
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.AssemblyInfo.cs
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.deps.json
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.dll
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.pdb
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\netcoreapp2.0\CleanArchitecture.Domain.dll
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\bin\Debug\netcoreapp2.0\CleanArchitecture.Domain.pdb
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.csproj.CopyComplete
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.dll
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.Infrastructure\obj\Debug\netcoreapp2.0\CleanArchitecture.Infrastructure.pdb

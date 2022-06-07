@@ -5,14 +5,27 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 {
     public sealed class AuthorRepository : IAuthorRepository
     {
+        private readonly CleanArchitectureContext _context;
+
+        public AuthorRepository(CleanArchitectureContext ctx)
+        {
+            _context = ctx;
+        }
+
         public async ValueTask AddAuthor(Author author)
         {
-            throw new NotImplementedException();
+            _context.Add(author);
+            _context.SaveChanges();
+        }
+
+        public async Task<IEnumerable<Author>> GetAllAuthors()
+        {
+            return _context.Authors;
         }
 
         public async Task<Author> GetAuthorByName(string name)
         {
-            throw new NotImplementedException();
+            return _context.Authors.Where(w => w.Name == name).FirstOrDefault();
         }
     }
 }

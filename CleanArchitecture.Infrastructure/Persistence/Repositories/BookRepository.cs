@@ -10,14 +10,28 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly List<Book> Books;
+        private readonly CleanArchitectureContext _context;
 
-        
-        public void CreateBook(Book book)
+        public BookRepository(CleanArchitectureContext ctx)
         {
-            throw new NotImplementedException();
+            _context = ctx;
         }
 
-     
+        public async ValueTask AddBook(Book book)
+        {
+            _context.Add(book);
+            _context.SaveChanges();
+        }
+
+        public async Task<IEnumerable<Book>> GetAllBooks()
+        {
+            return _context.Books;
+        }
+
+        public async Task<Book> GetBookByName(string name)
+        {
+            return _context.Books.Where(w => w.Name == name).FirstOrDefault();
+        }
+
     }
 }

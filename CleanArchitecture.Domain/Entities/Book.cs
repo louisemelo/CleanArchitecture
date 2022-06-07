@@ -4,6 +4,7 @@ namespace CleanArchitecture.Domain.Entities
 {
     public class Book : BaseEntity
     {
+        public Book() { }
         public Book(string name, Author author, int edition, int year)
         {
             Name = name;

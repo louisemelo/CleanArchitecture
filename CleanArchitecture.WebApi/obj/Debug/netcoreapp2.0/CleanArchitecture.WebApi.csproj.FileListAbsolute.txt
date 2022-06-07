@@ -1,0 +1,5 @@
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.WebApi\obj\Debug\netcoreapp2.0\CleanArchitecture.WebApi.csproj.AssemblyReference.cache
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.WebApi\obj\Debug\netcoreapp2.0\CleanArchitecture.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.WebApi\obj\Debug\netcoreapp2.0\CleanArchitecture.WebApi.AssemblyInfoInputs.cache
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.WebApi\obj\Debug\netcoreapp2.0\CleanArchitecture.WebApi.AssemblyInfo.cs
+C:\Users\louis\source\repos\CleanArchitecture\CleanArchitecture.WebApi\obj\Debug\netcoreapp2.0\CleanArchitecture.WebApi.csproj.CoreCompileInputs.cache

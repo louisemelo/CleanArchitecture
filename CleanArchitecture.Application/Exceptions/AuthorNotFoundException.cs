@@ -1,12 +1,9 @@
 ﻿namespace CleanArchitecture.Application.Exceptions
 {
-    public sealed class AuthorNotFoundException : Exception
+    public sealed class AuthorNotFoundException : BaseException
     {
-        public string Message { get; set; }
-
-        public AuthorNotFoundException(string message)
+        public AuthorNotFoundException(string message) : base(message)
         {
-            this.Message = message;
         }
     }
 }

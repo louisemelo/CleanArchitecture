@@ -4,6 +4,8 @@ namespace CleanArchitecture.Domain.Interfaces.Repositories
 {
     public interface IBookRepository
     {
-        void CreateBook(Book book);
+        ValueTask AddBook(Book book);
+        Task<IEnumerable<Book>> GetAllBooks();
+        Task<Book> GetBookByName(string name);
     }
 }

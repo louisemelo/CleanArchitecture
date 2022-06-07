@@ -1,5 +1,7 @@
 ﻿using CleanArchitecture.Application.Contracts;
+using CleanArchitecture.Application.Exceptions;
 using CleanArchitecture.Application.Inputs;
+using CleanArchitecture.Application.Outputs;
 using CleanArchitecture.Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,19 +12,23 @@ namespace CleanArchitecture.WebApi.Controllers
     /// <summary>
     /// Authors controller
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly IUseCase<CreateAuthorInput> _useCaseCreateAuthor;
+        private readonly IUseCaseCommand<CreateAuthorInput> _useCaseCreateAuthor;
+        private readonly IUseCaseQuery<GetAuthorByNameInput> _useCaseQueryGetAuthorByName;
+
 
         /// <summary>
         /// Authors controller constructor
         /// </summary>
         /// <param name="useCaseCreateAuthor"></param>
-        public AuthorsController(IUseCase<CreateAuthorInput> useCaseCreateAuthor)
+        public AuthorsController(IUseCaseCommand<CreateAuthorInput> useCaseCreateAuthor,
+                                 IUseCaseQuery<GetAuthorByNameInput> useCaseQueryGetAuthorByName)
         {
             _useCaseCreateAuthor = useCaseCreateAuthor;
+            _useCaseQueryGetAuthorByName = useCaseQueryGetAuthorByName;
         }
 
         /// <summary>
@@ -30,18 +36,41 @@ namespace CleanArchitecture.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("/add")]
-        public async Task<IActionResult> AddBook(CreateAuthorInput request)
+        [Route("/authors/add")]
+        public async Task<IActionResult> AddAuthor(CreateAuthorInput request)
         {
             try
             {
                 await _useCaseCreateAuthor.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                return Ok();
+                return Ok(new CreatedAuthorOutput($"Author {request.Name} created successfully."));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                var message = ((BaseException)ex).Messages;
+                return BadRequest(new CreatedAuthorOutput(message, true));
+            }
+        }
+
+        /// <summary>
+        /// Get author by name
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/authors/getByName")]
+        public async Task<IActionResult> GetAuthorByName([FromQuery] GetAuthorByNameInput request)
+        {
+            try
+            {
+                var result = await _useCaseQueryGetAuthorByName.ExecuteTaskAsync<GetAuthorByNameOutput>(request).ConfigureAwait(true);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var message = ((BaseException)ex).Messages;
+                return BadRequest(new GetAuthorByNameOutput(message, true));
             }
         }
     }

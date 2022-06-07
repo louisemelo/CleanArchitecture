@@ -6,5 +6,6 @@ namespace CleanArchitecture.Domain.Interfaces.Repositories
     {
         Task<Author> GetAuthorByName(string name);
         ValueTask AddAuthor(Author author);
+        Task<IEnumerable<Author>> GetAllAuthors();
     }
 }

@@ -9,16 +9,23 @@
             Authors controller
             </summary>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.Inputs.CreateAuthorInput})">
+        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.#ctor(CleanArchitecture.Application.Contracts.IUseCaseCommand{CleanArchitecture.Application.Inputs.CreateAuthorInput},CleanArchitecture.Application.Contracts.IUseCaseQuery{CleanArchitecture.Application.Inputs.GetAuthorByNameInput})">
             <summary>
             Authors controller constructor
             </summary>
             <param name="useCaseCreateAuthor"></param>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.AddBook(CleanArchitecture.Application.Inputs.CreateAuthorInput)">
+        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.AddAuthor(CleanArchitecture.Application.Inputs.CreateAuthorInput)">
             <summary>
             Add author
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.AuthorsController.GetAuthorByName(CleanArchitecture.Application.Inputs.GetAuthorByNameInput)">
+            <summary>
+            Get author by name
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:CleanArchitecture.WebApi.Controllers.BooksController">
@@ -26,7 +33,7 @@
             Books controller
             </summary>
         </member>
-        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCase{CleanArchitecture.Application.Inputs.CreateBookInput})">
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.#ctor(CleanArchitecture.Application.Contracts.IUseCaseCommand{CleanArchitecture.Application.Inputs.CreateBookInput},CleanArchitecture.Application.Contracts.IUseCaseQuery{CleanArchitecture.Application.Inputs.GetBookByNameInput})">
             <summary>
             Bookds controller constructor
             </summary>
@@ -36,6 +43,13 @@
             <summary>
             Add book
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BooksController.GetBookByName(CleanArchitecture.Application.Inputs.GetBookByNameInput)">
+            <summary>
+            Get book by name
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
     </members>

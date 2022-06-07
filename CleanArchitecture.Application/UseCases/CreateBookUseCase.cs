@@ -6,7 +6,7 @@ using CleanArchitecture.Domain.Interfaces.Repositories;
 
 namespace CleanArchitecture.Application.UseCases
 {
-    public sealed class CreateBookUseCase : IUseCase<CreateBookInput>
+    public class CreateBookUseCase : IUseCaseCommand<CreateBookInput>
     {
         private readonly IBookRepository _bookRepository;
         private readonly IAuthorRepository _authorRepository;
@@ -25,6 +25,11 @@ namespace CleanArchitecture.Application.UseCases
                 throw new AuthorNotFoundException("No author found for the given name. Author registration required to add a book.");
 
             var book = new Book(input.Name, author, input.Edition, input.Year);
+
+            if (!book.IsValid)
+                throw new ParametersInvalidsException(string.Join(';', book.Notifications.Select(s => s.Message).ToList()));
+
+            await _bookRepository.AddBook(book);
         }
     }
 }
