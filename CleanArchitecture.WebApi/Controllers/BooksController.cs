@@ -4,6 +4,7 @@ using CleanArchitecture.Application.Inputs;
 using CleanArchitecture.Application.Outputs;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CleanArchitecture.WebApi.Controllers
@@ -17,15 +18,19 @@ namespace CleanArchitecture.WebApi.Controllers
     {
         private readonly IUseCaseCommand<CreateBookInput> _useCaseCreateBook;
         private readonly IUseCaseQuery<GetBookByNameInput> _useCaseGetBookByName;
+        private readonly IUseCaseQueryList<BaseInput> _useCaseGetAllBooks;
 
         /// <summary>
         /// Bookds controller constructor
         /// </summary>
         /// <param name="useCaseCreateBook"></param>
-        public BooksController(IUseCaseCommand<CreateBookInput> useCaseCreateBook, IUseCaseQuery<GetBookByNameInput> useCaseGetBookByName)
+        public BooksController(IUseCaseCommand<CreateBookInput> useCaseCreateBook, 
+                               IUseCaseQuery<GetBookByNameInput> useCaseGetBookByName,
+                               IUseCaseQueryList<BaseInput> useCaseGetAllBooks)
         {
             _useCaseCreateBook = useCaseCreateBook;
             _useCaseGetBookByName = useCaseGetBookByName;
+            _useCaseGetAllBooks = useCaseGetAllBooks;
         }
 
         /// <summary>
@@ -62,12 +67,34 @@ namespace CleanArchitecture.WebApi.Controllers
             {
                 var result = await _useCaseGetBookByName.ExecuteTaskAsync(request).ConfigureAwait(true);
 
-                return Ok(result._result as GetBookByNameOutput);
+                return Ok(result._result as GetBooksOutput);
             }
             catch (Exception ex)
             {
                 var message = ((BaseException)ex).Messages;
-                return BadRequest(new GetBookByNameOutput(message, true));
+                return BadRequest(new GetBooksOutput(message, true));
+            }
+        }
+
+        /// <summary>
+        /// Get book by name
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/books/getAll")]
+        public async Task<IActionResult> GetAllBooks()
+        {
+            try
+            {
+                var result = await _useCaseGetAllBooks.ExecuteTaskAsync().ConfigureAwait(true);
+
+                return Ok(result._result as List<GetBooksOutput>);
+            }
+            catch (Exception ex)
+            {
+                var message = ((BaseException)ex).Messages;
+                return BadRequest(new GetBooksOutput(message, true));
             }
         }
     }

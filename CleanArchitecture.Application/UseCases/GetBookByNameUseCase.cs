@@ -25,7 +25,7 @@ namespace CleanArchitecture.Application.UseCases
             if (book == null)
                 throw new BookNotFoundException($"Book {input.Name} not found.");
 
-            var result = new BaseOutput() { _result = new GetBookByNameOutput(book.Id, book.Name, book.Author.Name, book.Edition, book.Year) };
+            var result = new BaseOutput() { _result = new GetBooksOutput(book.Name, book.Author.Name, book.Edition, book.Year) };
 
             return result;
         }

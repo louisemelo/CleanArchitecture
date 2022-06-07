@@ -39,5 +39,21 @@ namespace CleanArchitecture.Application.Configuration
 
             return services;
         }
+
+        public static IServiceCollection AddRegisterUseCasesQueriesList(this IServiceCollection services)
+        {
+            GetExecutingAssembly().GetTypes().
+            Where(item => item.GetInterfaces().
+            Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IUseCaseQueryList<>)) && !item.IsAbstract && !item.IsInterface).
+            ToList().
+            ForEach(assignedTypes =>
+            {
+                var serviceType = assignedTypes.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IUseCaseQueryList<>));
+                services.AddScoped(serviceType, assignedTypes);
+
+            });
+
+            return services;
+        }
     }
 }

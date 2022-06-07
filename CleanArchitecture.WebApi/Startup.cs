@@ -25,6 +25,7 @@ namespace CleanArchitecture.WebApi
         {
             services.AddRegisterUseCasesCommands();
             services.AddRegisterUseCasesQueries();
+            services.AddRegisterUseCasesQueriesList();
             services.AddRepositories();
             services.AddDbContext<CleanArchitectureContext>(opt => opt.UseInMemoryDatabase("CleanArchitectureDB"));
 

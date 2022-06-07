@@ -26,7 +26,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            return _context.Books;
+            return _context.Books.Include(i => i.Author);
         }
 
         public async Task<Book> GetBookByName(string name)
